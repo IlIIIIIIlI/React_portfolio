@@ -25,6 +25,7 @@ const Footer = () => {
         setLoading(true);
 
         const contact = {
+            // _type 是 sanity的写法，定位到那个form
             _type: 'contact',
             // 从 formData 中获取用户名
             name: formData.username,
@@ -34,7 +35,7 @@ const Footer = () => {
             message: formData.message,
         };
 
-        // 调用 client.create 方法创建 contact 对象
+        // 调用 client.create 方法创建 contact record
         client.create(contact)
             .then(() => {
                 // 创建成功，设置 loading 状态为 false
