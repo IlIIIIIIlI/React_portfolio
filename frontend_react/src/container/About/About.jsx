@@ -53,5 +53,6 @@ const About = () => {
 export default AppWrap(
     MotionWrap(About, 'app__about'),
     'about',
+    // give a white background, config in app.scss
     'app__whitebg',
 );

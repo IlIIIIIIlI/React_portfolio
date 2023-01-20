@@ -49,7 +49,8 @@ const Work = () => {
             <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
 
             <div className="app__work-filter">
-                {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'All'].map((item, index) => (
+                {/*预加载work的种类名称*/}
+                {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'work_tags', 'All'].map((item, index) => (
                     <div
                         key={index}
                         onClick={() => handleWorkFilter(item)}
@@ -61,11 +62,15 @@ const Work = () => {
             </div>
 
             <motion.div
+                //将animateCard状态对象作为动画效果应用到该div上
                 animate={animateCard}
+                // 设置动画持续时间为0.5s，子元素延迟0.5s执行
                 transition={{duration: 0.5, delayChildren: 0.5}}
+                //设置该div的class为app__work-portfolio
                 className="app__work-portfolio"
             >
                 {filterWork.map((work, index) => (
+                    // 循环渲染的每一项元素
                     <div className="app__work-item app__flex" key={index}>
                         <div
                             className="app__work-img app__flex"
@@ -73,8 +78,11 @@ const Work = () => {
                             <img src={urlFor(work.imgUrl)} alt={work.name}/>
 
                             <motion.div
+                                // 当鼠标悬停在该div上时，设置opacity从0变为1
                                 whileHover={{opacity: [0, 1]}}
+                                // 设置动画持续时间为0.25s，缓动函数为easeInOut, 子元素间隔0.5s执行
                                 transition={{duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5}}
+                                // 设置该div的class为app__work-hover app__flex
                                 className="app__work-hover app__flex"
                             >
                                 <a href={work.projectLink} target="_blank" rel="noreferrer">
